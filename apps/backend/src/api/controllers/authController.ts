@@ -1,10 +1,10 @@
-import { ERR } from '@constants/error';
+import { ERR } from 'constants/error';
 import { Request, Response } from 'express';
 import { generateRandomString } from 'utils/uuid';
 import querystring from 'querystring';
 import { Buffer } from 'buffer';
 import axios from 'axios';
-import { MSG } from '@constants/message';
+import { MSG } from 'constants/message';
 
 let token;
 
@@ -17,7 +17,7 @@ const {
     TOKEN_ENDPOINT
 } = process.env;
 
-export const loginController = async (request: Request, response: Response) => {
+export const loginController = async (_: Request, response: Response) => {
     const state = generateRandomString();
     if (!scope) {
         const { INTERNAL, MISSING_SCOPE } = ERR;
