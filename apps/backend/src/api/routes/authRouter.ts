@@ -1,6 +1,7 @@
 import {
     loginController,
-    redirectController
+    redirectController,
+    successController
 } from 'api/controllers/authController';
 import { Response, Request, Router } from 'express';
 
@@ -14,6 +15,10 @@ router.use(
 
 router.use('/redirect', async (request: Request, response: Response) =>
     redirectController(request, response)
+);
+
+router.use('/success', (request: Request, response: Response) =>
+    successController(request, response)
 );
 
 export default router;

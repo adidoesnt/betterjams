@@ -6,5 +6,17 @@ export const ERR = {
     MISSING_SCOPE: {
         status: 500,
         message: 'scope not set in environment'
+    },
+    MISSING_CODE: {
+        status: 401,
+        message: 'missing code upon redirect'
+    },
+    STATE_MISMATCH: {
+        status: 401,
+        message: 'state mismatch upon redirect'
+    },
+    AXIOS_ERROR: {
+        status: 500,
+        message: 'axios error'
     }
 };
