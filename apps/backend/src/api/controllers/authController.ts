@@ -6,7 +6,7 @@ import { Buffer } from 'buffer';
 import axios from 'axios';
 import { MSG } from 'constants/message';
 
-let token;
+export let token: string;
 
 const {
     SCOPE: scope,
