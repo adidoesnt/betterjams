@@ -1,6 +1,6 @@
 import { Express, Request, Response } from 'express';
-import { MSG } from '@constants/message';
-import { default as authRouter } from '@api/routes/authRouter';
+import { MSG } from 'constants/message';
+import { default as authRouter } from 'api/routes/authRouter';
 
 export function initRoutes(app: Express) {
     app.get('/', (_: Request, response: Response) => {
@@ -9,5 +9,5 @@ export function initRoutes(app: Express) {
             message
         });
     });
-    app.use(authRouter);
+    app.use('/auth', authRouter);
 }
