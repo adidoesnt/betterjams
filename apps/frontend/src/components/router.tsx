@@ -1,4 +1,3 @@
-import Home from '@pages/home';
 import Jam from '@pages/jam';
 import Login from '@pages/login';
 import Music from '@pages/music';
@@ -22,7 +21,6 @@ export const unauthenticatedRouter = createBrowserRouter(
 export const authenticatedRouter = createBrowserRouter(
     createRoutesFromElements(
         <Route path="/">
-            <Route path="/home" element={<Home />} />
             <Route path="/success" element={<Success />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/music" element={<Music />} />
