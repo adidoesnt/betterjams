@@ -17,5 +17,10 @@ export const unauthenticatedRouter = createBrowserRouter(
 );
 
 export const authenticatedRouter = createBrowserRouter(
-    createRoutesFromElements(<Route path="/home" element={<Home />} />)
+    createRoutesFromElements(
+        <Route path="/">
+            <Route path="/home" element={<Home />} />
+            <Route path="/success" element={<Success />} />
+        </Route>
+    )
 );

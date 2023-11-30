@@ -19,16 +19,16 @@ function Success() {
             const response = await axios.get(uri);
             const { data } = response;
             const { token } = data;
-            setIsAuthenticated(true);
             return token;
         } catch (error) {
-            console.error(error);
+            console.error("error", error);
         }
-    }, [setIsAuthenticated]);
+    }, []);
 
     useEffectOnce(() => {
         fetchToken().then((token) => {
             setToken(token);
+            setIsAuthenticated(true);
         });
     });
 
