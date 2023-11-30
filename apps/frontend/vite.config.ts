@@ -10,6 +10,7 @@ export default defineConfig({
             "@": path.join(__dirname, "src"),
             "@components": path.join(__dirname, "src/components"),
             "@pages": path.join(__dirname, "src/pages"),
+            "@state": path.join(__dirname, "src/state"),
         },
     },
 });
