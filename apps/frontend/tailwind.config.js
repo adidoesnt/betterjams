@@ -1,8 +1,16 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-    content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+    content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
     theme: {
-        extend: {},
+        extend: {
+            colors: {
+                black: '#000000',
+                white: '#FFFFFF',
+                grey: '#222222',
+                lavender: '#9373A1',
+                beige: '#EFD8BE'
+            }
+        }
     },
-    plugins: [],
+    plugins: []
 };
