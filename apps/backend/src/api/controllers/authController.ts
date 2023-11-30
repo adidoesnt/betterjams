@@ -2,9 +2,8 @@ import { ERR } from 'constants/error';
 import { Request, Response } from 'express';
 import { generateRandomString } from 'utils/uuid';
 import querystring from 'querystring';
-import { Buffer } from 'buffer';
-import axios from 'axios';
 import { MSG } from 'constants/message';
+import { getAuthTokenKey } from 'api/services/authService';
 
 export let token: string;
 
@@ -57,33 +56,20 @@ export const redirectController = async (
             message
         });
     }
-    const clientCredentials = Buffer.from(
-        `${client_id}:${client_secret}`
-    ).toString('base64');
-    const authorisation = `Basic ${clientCredentials}`;
-    const contentType = 'application/x-www-form-urlencoded';
-    const authOptions = {
-        params: {
-            grant_type: 'authorization_code',
-            code: code,
-            redirect_uri: redirect_uri
-        },
-        headers: {
-            'content-type': contentType,
-            Authorization: authorisation
-        }
-    };
     try {
-        const axiosResponse = await axios.post(
-            TOKEN_ENDPOINT ?? '',
-            {},
-            authOptions
+        const key = await getAuthTokenKey(
+            client_id ?? '',
+            client_secret ?? '',
+            code as string,
+            redirect_uri ?? '',
+            TOKEN_ENDPOINT ?? ''
         );
-        const { data } = axiosResponse;
-        const { access_token } = data;
-        token = access_token;
-        console.log('Received token');
-        return response.redirect('./success');
+        console.log(`Received key: ${key}`);
+        const qs = querystring.stringify({
+            key
+        });
+        // change to redirect to frontend
+        return response.redirect(`./success?${qs}`);
     } catch (error) {
         console.error(error);
         const { status, message } = ERR.AXIOS_ERROR;
@@ -93,6 +79,7 @@ export const redirectController = async (
     }
 };
 
+// to remove
 export const successController = (_: Request, response: Response) => {
     const { status, message } = MSG.OK;
     return response.status(status).json({
