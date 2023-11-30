@@ -18,5 +18,13 @@ export const ERR = {
     AXIOS_ERROR: {
         status: 500,
         message: 'axios error'
+    },
+    MISSING_KEY: {
+        status: 400,
+        message: 'missing cache key'
+    },
+    NOT_FOUND: {
+        status: 404,
+        message: 'not found'
     }
 };

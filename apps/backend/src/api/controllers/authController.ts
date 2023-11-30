@@ -4,6 +4,7 @@ import { generateRandomString } from 'utils/uuid';
 import querystring from 'querystring';
 import { MSG } from 'constants/message';
 import { getAuthTokenKey } from 'api/services/authService';
+import { cache } from 'utils/cache';
 
 export let token: string;
 
@@ -13,7 +14,8 @@ const {
     CLIENT_SECRET: client_secret,
     REDIRECT_URI: redirect_uri,
     AUTH_ENDPOINT,
-    TOKEN_ENDPOINT
+    TOKEN_ENDPOINT,
+    SUCCESS_ENDPOINT
 } = process.env;
 
 export const loginController = async (_: Request, response: Response) => {
@@ -69,7 +71,7 @@ export const redirectController = async (
             key
         });
         // change to redirect to frontend
-        return response.redirect(`./success?${qs}`);
+        return response.redirect(`${SUCCESS_ENDPOINT}?${qs}`);
     } catch (error) {
         console.error(error);
         const { status, message } = ERR.AXIOS_ERROR;
@@ -79,10 +81,25 @@ export const redirectController = async (
     }
 };
 
-// to remove
-export const successController = (_: Request, response: Response) => {
+export const tokenController = async (request: Request, response: Response) => {
+    const { query } = request;
+    const { key } = query;
+    if (!key) {
+        const { status, message } = ERR.MISSING_KEY;
+        return response.status(status).json({
+            message
+        });
+    }
+    const token = await cache.get(key as string);
+    if (!token) {
+        const { status, message } = ERR.MISSING_KEY;
+        return response.status(status).json({
+            message
+        });
+    }
     const { status, message } = MSG.OK;
     return response.status(status).json({
-        message
+        message,
+        token
     });
 };

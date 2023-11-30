@@ -14,3 +14,4 @@ export const cache = createClient({
 })
 
 await cache.connect();
+await cache.flushAll();

@@ -2,12 +2,17 @@ import axios from 'axios';
 import { cache } from 'utils/cache';
 import { v4 as uuidv4 } from 'uuid';
 
+const { CACHE_EXPIRY } = process.env;
+const exp = parseInt(CACHE_EXPIRY ?? '60');
+
 export const cacheToken = async (token: string) => {
     const id = uuidv4();
     const key = `token-${id}`;
     try {
         console.log('token set in cache');
-        await cache.set(key, token);
+        await cache.set(key, token, {
+            EX: exp
+        });
         return key;
     } catch (error: unknown) {
         throw error;
