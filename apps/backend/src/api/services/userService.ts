@@ -37,3 +37,20 @@ export const getUserProfile = async (
         throw error;
     }
 };
+
+export const getUserPlaylists = async (
+    token: string,
+    playlists_endpoint: string
+) => {
+    try {
+        const response = await axios.get(playlists_endpoint, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        });
+        const { data: playlists } = response;
+        return playlists;
+    } catch (error: unknown) {
+        throw error;
+    }
+};
