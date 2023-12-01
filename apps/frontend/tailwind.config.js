@@ -9,6 +9,9 @@ export default {
                 grey: '#222222',
                 lavender: '#9373A1',
                 beige: '#EFD8BE'
+            },
+            fontFamily: {
+                lexend: ['Lexend Deca', 'sans-serif']
             }
         }
     },

@@ -35,7 +35,7 @@ const JamButton = () => {
 
 export const Footer = () => {
     return (
-        <div className="flex w-full h-full justify-center items-center p-4">
+        <div className="flex w-[100dvw] h-full justify-center items-center p-4">
             <div className="flex gap-8 h-full justify-between items-center bg-grey rounded-3xl border-[1px] border-beige px-4 py-2">
                 <ProfileButton />
                 <MusicButton />

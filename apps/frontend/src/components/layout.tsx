@@ -12,7 +12,7 @@ function Layout({ children }: Readonly<LayoutProps>) {
   return (
     <div
       id="container"
-      className="grid w-[100dvw] h-[100dvh] grid-rows-[1fr_7fr_1fr] items-center justify-center bg-lavender"
+      className="grid font-lexend w-[100dvw] h-[100dvh] grid-rows-[1fr_7fr_1fr] items-center justify-center bg-lavender"
     >
       {isAuthenticated ? <Header /> : null}
       <div id="middle" className="row-start-2">
