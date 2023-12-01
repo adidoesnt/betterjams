@@ -34,10 +34,8 @@ export const ProfileCard = ({
                 </div>
                 <hr className="border-lavender rounded-md w-[90%]" />
                 <img
-                    className="rounded-full"
+                    className="rounded-full border-lavender border-2 h-[100px] w-[100px] md:h-[150px] md:w-[150px]"
                     src={display_image?.url}
-                    height={100}
-                    width={100}
                 />
                 <div className="text-lg">
                     <p>{country}</p>

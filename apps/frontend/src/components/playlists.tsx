@@ -6,7 +6,9 @@ import { useEffectOnce, useSessionStorage } from 'usehooks-ts';
 
 const { VITE_PLAYLISTS_URL } = import.meta.env;
 
-export type PlaylistProps = Partial<Playlist>;
+export type PlaylistProps = {
+    playlist: Partial<Playlist>;
+};
 
 export type PlaylistsProps = Partial<
     Omit<Playlists, 'items'> & {
@@ -14,8 +16,15 @@ export type PlaylistsProps = Partial<
     }
 >;
 
-export const PlaylistCard = () => {
-    return <></>;
+export const PlaylistCard = (props: PlaylistProps) => {
+    const { playlist } = props;
+    const { name } = playlist;
+
+    return (
+        <div className="w-[75%] bg-lavender rounded-md border-grey border-[1px] p-2">
+            <h3>{name}</h3>
+        </div>
+    );
 };
 
 export const PlaylistsCard = () => {
@@ -45,7 +54,14 @@ export const PlaylistsCard = () => {
         });
     });
 
-    console.log(playlists);
-
-    return <></>;
+    return (
+        <div className="flex flex-col w-[100dvw] justify-center items-center p-4 gap-4">
+            <h1 className="text-3xl font-semibold">Playlists</h1>
+            <div className="flex flex-col w-[90%] md:w-[75%] lg:w-[50%] max-h-[60dvh] items-center overflow-y-auto bg-beige rounded-lg p-4 gap-2 border-[1px] border-grey">
+                {playlists?.items.map((playlist: Playlist) => (
+                    <PlaylistCard playlist={playlist} />
+                ))}
+            </div>
+        </div>
+    );
 };
