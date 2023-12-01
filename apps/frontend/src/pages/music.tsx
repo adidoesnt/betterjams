@@ -1,9 +1,10 @@
 import Layout from '@components/layout';
+import { PlaylistsCard } from '@components/playlists';
 
 function Music() {
     return (
         <Layout>
-            <div>Placeholder</div>
+            <PlaylistsCard />
         </Layout>
     );
 }

@@ -10,7 +10,7 @@ export const ProfileCard = ({
     country,
     external_urls
 }: ProfileCardProps) => {
-    const display_image = images?.[0];
+    const display_image = images?.[1];
     const external_url = external_urls?.spotify;
 
     const getFollowers = useCallback(
@@ -36,8 +36,8 @@ export const ProfileCard = ({
                 <img
                     className="rounded-full"
                     src={display_image?.url}
-                    height={display_image?.height}
-                    width={display_image?.width}
+                    height={100}
+                    width={100}
                 />
                 <div className="text-lg">
                     <p>{country}</p>
@@ -48,9 +48,6 @@ export const ProfileCard = ({
                             Open on <span className="text-green">Spotify</span>
                         </p>
                     </a>
-                </div>
-                <div>
-                    <p>Welcome to BetterJams! This is your profile page. </p>
                 </div>
                 <div>
                     <button>

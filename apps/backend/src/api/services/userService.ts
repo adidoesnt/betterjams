@@ -12,7 +12,7 @@ export const cacheProfile = async (profile: any) => {
     const profileString = stringify(profile);
     try {
         console.log('token set in cache');
-        await cache.set(key, profile, {
+        await cache.set(key, profileString, {
             EX: exp
         });
         return key;

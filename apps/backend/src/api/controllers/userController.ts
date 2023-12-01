@@ -2,11 +2,12 @@ import { getUserPlaylists, getUserProfile } from 'api/services/userService';
 import { ERR } from 'constants/error';
 import { RequestWithToken } from 'constants/express';
 import { MSG } from 'constants/message';
-import { Request, Response } from 'express';
+import { Response } from 'express';
 
-const { PROFILE_ENDPOINT } = process.env;
+const { PROFILE_ENDPOINT, PLAYLISTS_ENDPOINT } = process.env;
 
 const profile_endpoint = PROFILE_ENDPOINT ?? '';
+const playlists_endpoint = PLAYLISTS_ENDPOINT ?? '';
 
 export const profileController = async (
     request: RequestWithToken,
@@ -35,7 +36,7 @@ export const playlistController = async (
 ) => {
     const { token } = request;
     try {
-        const playlists = await getUserPlaylists(token, profile_endpoint);
+        const playlists = await getUserPlaylists(token, playlists_endpoint);
         const { status, message } = MSG.OK;
         return response.status(status).json({
             message,
