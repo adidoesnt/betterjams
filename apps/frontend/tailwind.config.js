@@ -8,7 +8,8 @@ export default {
                 white: '#FFFFFF',
                 grey: '#222222',
                 lavender: '#9373A1',
-                beige: '#EFD8BE'
+                beige: '#EFD8BE',
+                green: '#1DB954'
             },
             fontFamily: {
                 lexend: ['Lexend Deca', 'sans-serif']
