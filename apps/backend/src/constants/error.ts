@@ -26,5 +26,9 @@ export const ERR = {
     NOT_FOUND: {
         status: 404,
         message: 'not found'
+    },
+    MISSING_TOKEN: {
+        status: 401,
+        message: 'missing auth token'
     }
 };
