@@ -49,6 +49,16 @@ export const ProfileCard = ({
                         </p>
                     </a>
                 </div>
+                <div>
+                    <p>Welcome to BetterJams! This is your profile page. </p>
+                </div>
+                <div>
+                    <button>
+                        <p>
+                            Check out your <span className='underline'>wrapped</span>.
+                        </p>
+                    </button>
+                </div>
             </div>
         </div>
     );
