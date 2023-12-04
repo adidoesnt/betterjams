@@ -30,5 +30,9 @@ export const ERR = {
     MISSING_TOKEN: {
         status: 401,
         message: 'missing auth token'
+    },
+    BAD_REQUEST: {
+        status: 400,
+        message: 'missing query or body parameters'
     }
 };
