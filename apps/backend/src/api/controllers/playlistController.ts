@@ -22,7 +22,7 @@ export const songsController = async (
             });
         }
         const uri = `${songs_endpoint_prefix}/${playlist_id}/tracks`;
-        const songs = await getPlaylistSongs(token, uri);
+        const songs = await getPlaylistSongs(token, uri, playlist_id as string);
         const { status, message } = MSG.OK;
         return response.status(status).json({
             message,
