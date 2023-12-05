@@ -14,7 +14,7 @@ router.get(
 );
 
 router.get('/redirect', async (request: Request, response: Response) =>
-    redirectController(request, response)
+    await redirectController(request, response)
 );
 
 router.get('/token', async (request: Request, response: Response) => {
