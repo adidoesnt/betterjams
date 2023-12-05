@@ -74,6 +74,7 @@ export const getUserProfile = async (
     try {
         const cachedProfile = await getProfileFromCache(token);
         if (cachedProfile) return cachedProfile;
+        console.log('firing API call')
         const response = await axios.get(profile_endpoint, {
             headers: {
                 Authorization: `Bearer ${token}`
@@ -94,6 +95,7 @@ export const getUserPlaylists = async (
     try {
         const cachedPlaylists = await getPlaylistsFromCache(token);
         if (cachedPlaylists) return cachedPlaylists;
+        console.log('firing API call')
         const response = await axios.get(playlists_endpoint, {
             headers: {
                 Authorization: `Bearer ${token}`

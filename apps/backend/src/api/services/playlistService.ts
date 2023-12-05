@@ -43,6 +43,7 @@ export const getPlaylistSongs = async (
     try {
         const cachedSongs = await getSongsFromCache(playlist_id);
         if (cachedSongs) return cachedSongs;
+        console.log('firing API call')
         const response = await axios.get(songs_endpoint, {
             headers: {
                 Authorization: `Bearer ${token}`
