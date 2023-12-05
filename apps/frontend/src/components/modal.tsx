@@ -34,7 +34,6 @@ const Modal = ({ isOpen, setIsOpen, playlist_id }: ModalProps) => {
                 });
                 const { data } = response;
                 const { songs } = data;
-                console.log(songs);
                 return songs.items as Song[];
             } catch (error: unknown) {
                 console.error(error);

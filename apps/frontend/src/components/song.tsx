@@ -130,11 +130,9 @@ export const SongCard = (props: SongProps) => {
                 {track?.artists?.map((artist) => artist.name).join(', ')}
             </h4>
             <h4 className="font-light">
-                {track?.album.release_date.split('-')[0]}
+                {track?.album?.release_date?.split('-')[0]}
             </h4>
-            <h4 className="font-light">
-                {getDuration(track?.duration_ms)}
-            </h4>
+            <h4 className="font-light">{getDuration(track?.duration_ms)}</h4>
         </div>
     );
 };
